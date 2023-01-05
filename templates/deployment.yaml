@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+  {{- include "webserver.labels" . | nindent 4 }}
+  name: {{ .Release.Name }}-nginx
+spec:
+  replicas: {{ .Values.webserver.replicas.count }}
+  selector: 
+    matchLabels:
+    {{- include "webserver.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+       labels: 
+       {{- include "webserver.selectorLabels" . | nindent 9 }}
+    spec:
+      containers:
+      - image: nginx
+        name: nginx

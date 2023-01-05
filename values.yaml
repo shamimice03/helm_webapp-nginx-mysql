@@ -1,0 +1,9 @@
+webserver:
+   labels:
+     env: dev
+     app: webserver
+   replicas:
+     count: 1
+   service:
+     type: LoadBalancer
+     port: 80

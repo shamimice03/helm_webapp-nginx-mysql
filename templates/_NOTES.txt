@@ -1,0 +1,7 @@
+1. Ger Application URL by running following command:
+{{-  if contains "LoadBalancer" .Values.webserver.service.type }}
+  >> kubectl get svc -n {{ .Release.Namespace }} {{ .Release.Name }}-service
+
+* Get the External IP and Visit http://<External-IP>>:80
+
+{{- end }}
